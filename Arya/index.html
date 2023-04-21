@@ -1,0 +1,316 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Ultra&display=swap" rel="stylesheet">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Boogaloo&family=Carter+One&display=swap" rel="stylesheet">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Alef&display=swap" rel="stylesheet">
+
+
+    <title>VALIDATION</title>
+    <script src="index.js"></script>
+</head>
+<style>
+   
+    h1{font-family: 'Ultra', serif;
+        text-align: center;padding-top: 15px;padding-bottom: 15px;background: linear-gradient(to left,rgba(116,235,213,0.6),rgba(158, 170, 228, 0.732));margin-top:20px;border-radius: 10px;margin-bottom:20px;
+    }
+    .r{
+        background: linear-gradient(to left,rgba(116,235,213,0.6),rgba(158, 170, 228, 0.732));font-family: 'Ultra', serif;border-radius:10px;
+        margin-left: 1px;margin-right: 1px;margin-bottom:20px ;display: flex;align-items: center;justify-content: center;margin-top: 10px;
+    }
+    .text-danger{
+        font-family: 'Alef', sans-serif;
+    }
+</style>
+
+<body style="background:url('bg1.jpg');
+font-family: 'Carter One';">
+    <div class="container">
+        <div id="success"class="alert alert-success alert-dismissible fade " role="alert ">
+            <strong>Success!</strong> Your form has been successfully submitted.
+            <button type="button"class="close" data-dismiss="alert"aria-label="Close">
+             <span aria-hidden="true">&times;</span>
+            </button>
+           </div>
+
+        <h1>Registration Form</h1>
+
+        <form onsubmit="return myFun()" style="color:rgb(6, 188, 255);">
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="inpufname">First Name:</label>
+                    <input type="text" class="form-control" id="inputfname" placeholder="First Name" autocomplete="off"  onkeyup="firstname()" >
+                    <p id="sms1" class="text-danger"></p>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="inputlname">Last Name:</label>
+                    <input type="text" class="form-control" id="inputlname" placeholder="Last Name" autocomplete="off"  onkeyup="lastname()" >
+                    <p id="sms2" class="text-danger"></p>
+                </div>
+            </div>
+            <div class="form-group ">
+                <label for="inputemail">Email address:</label>
+                <input type="text" class="form-control" id="inputemail" placeholder="name@example.com" autocomplete="off"  onkeyup="emailFunction()">
+                <p id="sms3" class="text-danger"></p>
+            </div>
+            <div class="form-group">
+                <label for="inputpassword">Password:</label>
+                <input type="password" class="form-control" id="pass1" placeholder="Password" onkeyup="password()">
+                <p id="sms4" class="text-danger"></p>
+            </div>
+            <div class="form-group">
+                <label for="inputconfirmpassword">Confirm Password:</label>
+                <input type="password" class="form-control" id="pass2" placeholder="Confirm Password" onkeyup="conpassword()">
+                <p id="sms5" class="text-danger"></p>
+            </div>
+            <div class="form-group">
+                <div class="row d-flex">
+                    <div class="col-md-5 mt-3">
+                        <label  for="gender">Gender:</label>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="radiogen" id="male"
+                                value="option1" onclick="validateGender()">
+                            <label class="form-check-label" for="inlineRadio1">Male</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="radiogen" id="female"
+                                value="option2" onclick="validateGender()">
+                            <label class="form-check-label" for="inlineRadio2">Female</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="radiogen" id="other"
+                                value="option3" onclick="validateGender()">
+                            <label class="form-check-label" for="inlineRadio3">Other</label>
+                        </div>
+                        <p class="text-danger" id="genderError"></p>
+                    </div>
+                    <div class="col-md-5 mt-3">
+                        <label for="languageknown">Language Known:</label>
+
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" name="language" type="checkbox" id="hindi" value="option1"onclick="validateLanguage()">
+                            <label class="form-check-label" for="inlineCheckbox1">Hindi</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input"name="language"  type="checkbox" id="english" value="option2"onclick="validateLanguage()">
+                            <label class="form-check-label" for="inlineCheckbox2">English</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input"name="language"  type="checkbox" id="other1" value="option3"onclick="validateLanguage()">
+                            <label class="form-check-label" for="inlineCheckbox3">Other</label>
+                        </div>
+                        <p id="languageError" class="text-danger"></p>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="inputdob">Date Of Birth:</label>
+                <input type="date" class="form-control" id="inputdob" placeholder="name@example.com" onclick="dbirth()">
+                <p id="sms6" class="text-danger"></p>
+            </div>
+            <!-- country with country code -->
+            <div class="form-row">
+                <div class="form-group col-md-4">
+                    <label for="country-select">Select Country:</label>
+                    <select id="country-select" onclick="validatePhone()" class="form-control" required>
+                        <option>Select Country Name--</option>                      
+                        <option value="us">USA</option>
+                        <option value="vietnam">Vietnam</option>
+                        <option value="india">India</option>
+                        <option value="china">China</option>
+                        <option value="uae">UAE</option>
+                    </select>
+                    <p id="countryError" class="text-danger"></p>
+                </div>
+                <div class="form-group col-md-2">
+                    <label for="inputcode">Country Code</label>
+                    <input type="text" class="form-control" id="inputcode" readonly>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="inputphone">Enter Phone Number:</label>
+                    <input type="tel" class="form-control" id="inputphone" minlength="10" maxlength="10">
+                    <p id="phoneError" class="text-danger"></p>
+                </div>
+            </div>
+            <!-- <div class="form-group">
+                <label for="inputqualification">Qualifications:</label>
+                <select class="form-control" id="inputqualification" required>
+                    <option>Select One....</option>
+                    <option>Graduation</option>
+                    <option>Higher Secondary</option>
+                    <option>Matriculation Pass</option>
+                    <option>Diploma</option>
+              </select>
+                <p id="msg6"></p>
+            </div> -->
+      <!-- fir image uploading -->
+            <div class="form-group mb-5">
+                <label class="" for="file">&nbsp;Select an image (max size 2MB):</label>
+                <input type="file" id="file" accept=".jpeg,.jpg,.png" class="form-control form-control-lg" onfocus="imageval()" >
+                <p id="fileError" class="text-danger"></p>
+            </div>
+        
+            <div class="form-group mb-5">
+                <label  for="">&nbsp;Select a document (max size 5MB):</label>
+                <input class="form-control form-control-lg" type="file" id="doc" name="document" accept=".pdf, .doc, .docx" maxlength="5000000" onfocus="docval()">
+                <p id="documentError" class="text-danger"></p>
+              </div>
+              <!-- address -->
+            <div class="form-group">
+                <label for="address">Address:</label>
+                <textarea class="form-control" id="address" rows="3"placeholder="Enter your address here...." onkeyup="addr()"></textarea>
+                <p id="sms7" class="text-danger"></p>
+            </div>
+          <!-- for captcha -->
+            <div class="form-group mt-2">
+                <div class="captcha " style="margin-top: 10px;">
+                    <input type="text"style="height:40px;width:20%;" id="captcha-input" placeholder="Enter the code above"  onreset="refreshCaptcha()"/>
+                    <img src="" alt="CAPTCHA code" id="captcha-img" />
+                    <button type="button"style="height:40px;width:8%;" onclick="refreshCaptcha()">Refresh</button>
+                  </div>
+                  <p id="captcha-feedback"class="text-danger"></p>
+            </div>
+            <!-- buttons -->
+            <div class="form-row r">
+                <div class="form-group col-auto">
+                    <button type="submit" style="width: 150px;height: auto;margin-left:10px;"class="btn btn-info text-dark btn-lg mt-3">Submit</button>
+                </div>
+                <div class="form-group col-auto">
+                    <button type="submit"style="width: 150px;height:auto;margin-left:10px;" class="btn btn-info text-dark btn-lg mt-3">Reset</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+</body>
+
+<script>
+
+window.onload = function() {
+  refreshCaptcha();
+}
+
+const firstName = document.getElementById("inputfname");
+const lastName = document.getElementById("inputlname");
+  firstName.addEventListener("keydown", function(event) {
+  if (firstName.selectionStart === 0 && event.keyCode === 32) {
+    event.preventDefault();
+  }
+});
+    let isDotEntered = false;
+    lastName.addEventListener("keydown", function (event) {
+      if (lastName.selectionStart === 0 && event.keyCode === 32) {
+        event.preventDefault();
+      }
+      if (isDotEntered && event.keyCode !== 8) {
+        event.preventDefault();
+      }
+      if (event.keyCode === 190) {
+        isDotEntered = true;
+        document.getElementById("sms2").innerHTML = " ";
+      }
+      if (event.keyCode === 8) {
+        isDotEntered = false;
+      }
+    });
+let pass1Field = document.getElementById("pass1");
+pass1Field.addEventListener("keydown", function(event) {
+  if (pass1Field.selectionStart === 0 && event.keyCode === 32) {
+    event.preventDefault();
+  }
+});
+let pass2Field = document.getElementById("pass2");
+pass2Field.addEventListener("keydown", function(event) {
+  if (pass2Field.selectionStart === 0 && event.keyCode === 32) {
+    event.preventDefault();
+  }
+});
+let emailField = document.getElementById("inputemail");
+emailField.addEventListener("keydown", function(event) {
+  if (emailField.selectionStart === 0 && event.keyCode === 32) {
+    event.preventDefault();
+  }
+});
+let addressField = document.getElementById("address");
+addressField.addEventListener("keydown", function(event) {
+  if (addressField.selectionStart === 0 && event.keyCode === 32) {
+    event.preventDefault();
+  }
+});
+
+
+
+// for phone input
+const inputField = document.getElementById("inputphone");
+    let previousChar = "";
+    let sameCharCount = 0;
+
+    inputField.addEventListener("input", function (e) {
+      const currentChar = e.data;
+      if (currentChar === previousChar) {
+        sameCharCount++;
+        if (sameCharCount >= 2) {
+          inputField.value = inputField.value.slice(0, -1);
+        }
+      } else {
+        sameCharCount = 0;
+      }
+      previousChar = currentChar;
+    });
+//for address
+    const addressField1 = document.querySelector('#address');
+function addWhiteSpace(element) {
+  const address = element.value;
+  let formattedAddress = '';
+  let count = 0;
+
+  for (let i = 0; i < address.length; i++) {
+    if (count > 0 && count % 16 === 0) {
+      if (address[i] !== ' ') {
+        formattedAddress += ' ';
+      }
+    }
+    formattedAddress += address[i];
+    if (address[i] !== ' ') {
+      count++;
+    } else {
+      count = 0;
+    }
+  }
+
+  element.value = formattedAddress;
+}
+addressField1.addEventListener('input', function() {
+  addWhiteSpace(addressField1);
+});
+</script>
+
+</html>
